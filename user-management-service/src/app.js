@@ -1,28 +1,31 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import cors from 'cors';
+import authRoutes from './routes/auth.routes.js';  // Importing the authentication routes
+import userRoutes from './routes/user.routes.js';
+import { setupSwaggerDocs } from './docs/swagger.js'; // Swagger setup (optional)
+import { errorHandler } from './middlewares/error.middleware.js';  // Global error handler (if applicable)
 
-import {userRoutes} from './routes/user.routes.js';
-import {authRoutes} from './routes/auth.routes.js';
-import { errorHandler } from './middlewares/error.middleware.js';
-import { setupSwaggerDocs } from './docs/swagger.js';
-
-dotenv.config();
+dotenv.config();  // Load environment variables from .env
 
 const app = express();
 
-app.use(cors());
-app.use(express.json());  // for parsing application/json
-// Swagger docs setup
-setupSwaggerDocs(app);
-// Routes
-app.use('/api/users', userRoutes);
-app.use('/api/auth', authRoutes);
+// Middleware to parse incoming JSON requests
+app.use(express.json());
 
-// Error Handling Middleware
+// Route for authentication and user management
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+
+// Setup Swagger API documentation (Optional)
+setupSwaggerDocs(app);
+
+// Global error handling middleware (optional)
 app.use(errorHandler);
 
+// Start the server
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
+
+export default app;
