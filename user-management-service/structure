@@ -1,0 +1,52 @@
+user-management-service/
+│
+├── src/                          # Main source code directory
+│   ├── controllers/               # Handles incoming HTTP requests, calls services
+│   │   └── user.controller.js     # Controller for user-related requests (e.g., signup, login)
+│   │
+│   ├── models/                    # (Not needed with Prisma, will use prisma schema)
+│   │   
+│   ├── services/                  # Service layer for business logic
+│   │   ├── user.service.js        # Handles user-related logic, role management
+│   │   └── auth.service.js        # Handles authentication, password hashing, token management
+│   │
+│   ├── middlewares/               # Express middlewares for validation, authentication, etc.
+│   │   ├── auth.middleware.js     # Middleware to check JWT tokens and user roles
+│   │   └── error.middleware.js    # Global error handling middleware
+│   │
+│   ├── utils/                     # Utility functions (email, token, password hashing, etc.)
+│   │   ├── bcrypt.util.js         # For password hashing
+│   │   ├── jwt.util.js            # JWT token generation and validation
+│   │   ├── email.util.js          # Sending emails (for verification, password reset)
+│   │   └── validation.util.js     # Input validation (e.g., using Joi or custom validation)
+│   │
+│   ├── prisma/                    # Prisma configuration and schema files
+│   │   ├── schema.prisma          # Prisma schema for defining the database models
+│   │   └── migrations/            # Auto-generated Prisma migrations for database
+│   │
+│   ├── routes/                    # Express route definitions
+│   │   ├── user.routes.js         # User-related routes (signup, login, profile)
+│   │   └── auth.routes.js         # Authentication routes (login, logout, password recovery)
+│   │
+│   ├── config/                    # Configuration files (environment variables, etc.)
+│   │   ├── db.config.js           # PostgreSQL database configuration for Prisma
+│   │   └── env.config.js          # Environment variables loading (using dotenv)
+│   │
+│   ├── docs/                      # API documentation setup (Swagger)
+│   │   └── swagger.js             # Swagger API documentation configuration
+│   │
+│   ├── tests/                     # Unit and integration tests (e.g., using Jest or Mocha)
+│   │   ├── user.test.js           # Unit tests for user service
+│   │   └── auth.test.js           # Unit tests for authentication service
+│   │
+│   ├── app.js                     # Main Express app setup (Express middleware, routes)
+│   └── server.js                  # Entry point to start the server
+│
+├── .env                           # Environment variables (database URL, JWT secret, etc.)
+├── .env.example                   # Example environment variables file
+├── .dockerignore                  # Ignore files when building Docker image
+├── .gitignore                     # Ignore files for Git
+├── docker-compose.yml             # Docker Compose configuration (PostgreSQL, Node.js)
+├── Dockerfile                     # Dockerfile for building the user management microservice
+├── package.json                   # Node.js dependencies and scripts
+└── prisma.schema                  # Prisma schema to define database models and relations

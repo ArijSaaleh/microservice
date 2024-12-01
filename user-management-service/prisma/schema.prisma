@@ -1,0 +1,31 @@
+// Define the database provider and connection string
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // Store connection string in .env
+}
+
+generator client {
+  provider = "prisma-client-js" // Prisma Client to interact with the database
+}
+
+// Define the User model
+model User {
+  id               Int       @id @default(autoincrement())
+  email            String    @unique
+  passwordHash     String // Store hashed password
+  role             Role // Role of the user (e.g., Admin, Event Planner)
+  isVerified       Boolean   @default(false) // For email verification
+  createdAt        DateTime  @default(now()) // Automatically set on user creation
+  updatedAt        DateTime  @updatedAt // Automatically updated on each change
+  lastLogin        DateTime?
+  resetToken       String? // Token for password reset
+  resetTokenExpiry DateTime? // Expiry time for reset token
+}
+
+// Enum for User roles
+enum Role {
+  EVENT_PLANNER
+  VENUE_OWNER
+  ADMIN
+  GUEST
+}
