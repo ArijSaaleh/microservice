@@ -51,3 +51,4 @@
 2024-12-02 18:42:58 [32minfo[39m: User already logged in: 7
 2024-12-02 18:43:48 [33mwarn[39m: Attempted registration with existing email: ariij.saleh@gmail.com
 2024-12-02 18:43:48 [31merror[39m: User registration failed: Email already exists
+2024-12-02 18:44:44 [32minfo[39m: User already logged in with id : 7
