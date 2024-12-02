@@ -1,6 +1,7 @@
 import express from 'express';
 import { registerUser, loginUser, getUserProfile, resetPassword, completePasswordReset } from '../controllers/user.controller.js';
 import { authMiddleware } from '../middlewares/auth.middleware.js';
+import { checkLoggedIn } from '../middlewares/loggedIn.middleware.js';
 
 const router = express.Router();
 
@@ -16,7 +17,7 @@ router.post('/signup', registerUser);
  * @desc Log in a user
  * @access Public
  */
-router.post('/login', loginUser);
+router.post('/login', checkLoggedIn, loginUser);
 
 /**
  * @route GET /profile

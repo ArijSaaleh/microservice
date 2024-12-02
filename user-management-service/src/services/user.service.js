@@ -1,6 +1,6 @@
 import prisma from '../../prisma/client.js';             // Prisma client to interact with PostgreSQL
 import bcrypt from 'bcryptjs';                        // For password hashing and comparison
-import { generateToken } from '../utils/jwt.util.js'; // JWT token generation utility
+import { generateToken, verifyToken} from '../utils/jwt.util.js'; // JWT token generation utility
 import { sendVerificationEmail, sendPasswordResetEmail } from '../utils/email.util.js'; // Email utilities
 import logger from '../utils/logger.js';              // Winston logger for logging activities
 
@@ -38,33 +38,55 @@ export const registerUserService = async (email, password, role) => {
 
   return newUser;
 };
-
-// Validate user login (check email and password)
-export const loginUserService = async (email, password) => {
+/**
+ * @desc Authenticate and log in a user, returning a JWT token
+ * @param {string} email - The user's email
+ * @param {string} password - The user's password
+ * @returns {object} - The logged-in user's data and token
+ */
+// Login user (check email + password and if user already logged in)
+export const loginUserService = async (email, password, existingToken) => {
   // Find the user by email in the database
   const user = await prisma.user.findUnique({
     where: { email },
   });
 
   if (!user) {
-    logger.warn(`Login attempt with non-existing email: ${email}`);
     throw new Error('User not found');
   }
 
   // Compare the provided password with the stored hashed password
   const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
   if (!isPasswordValid) {
-    logger.warn(`Invalid password attempt for email: ${email}`);
     throw new Error('Invalid credentials');
   }
 
-  // Generate JWT token for the user
-  const token = generateToken(user);
-  logger.info(`User logged in: ${user.email}`);
+  // If an existing token is passed, verify if it's still valid
+  if (existingToken) {
+    try {
+      const decoded = verifyToken(existingToken);
 
-  // Return the user details and the token
-  return { user, token };
+      // If the token is valid and belongs to the same user, return the existing token
+      if (decoded.userId === user.id) {
+        return { user, token: existingToken, message: 'Already logged in.' };
+      }
+    } catch (error) {
+      // Token is invalid or expired, continue with generating a new token
+    }
+  }
+
+  // Generate a new JWT token for the user
+  const newToken = generateToken(user);
+
+  // Update the lastLogin field
+  await prisma.user.update({
+    where: { email },
+    data: { lastLogin: new Date() }
+  });
+
+  return { user, token: newToken, message: 'Login successful!' };
 };
+
 
 // Get the user's profile by their ID
 export const getUserByIdService = async (userId) => {
