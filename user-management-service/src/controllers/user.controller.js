@@ -16,7 +16,7 @@ import logger from '../utils/logger.js';
 
 /**
  * @swagger
- * /api/users/signup:
+ * /api/auth/signup:
  *   post:
  *     summary: Register a new user
  *     tags: [Users]
@@ -53,7 +53,7 @@ import logger from '../utils/logger.js';
  *                   properties:
  *                     email:
  *                       type: string
- *                       example: "test@example.com"
+ *                     example: "test@example.com"
  *                     role:
  *                       type: string
  *                       example: "EVENT_PLANNER"
@@ -78,7 +78,7 @@ export const registerUser = async (req, res) => {
 
 /**
  * @swagger
- * /api/users/login:
+ * /api/auth/login:
  *   post:
  *     summary: Log in a user
  *     tags: [Users]
@@ -169,7 +169,7 @@ export const loginUser = async (req, res) => {
  */
 export const getUserProfile = async (req, res) => {
   try {
-    const userId = req.user.id; // Assuming the user ID is decoded from JWT by middleware
+    const userId = req.user.userId; // Assuming the user ID is decoded from JWT by middleware
     const user = await getUserByIdService(userId);
     res.status(200).json({
       message: 'User profile fetched successfully!',
@@ -177,13 +177,14 @@ export const getUserProfile = async (req, res) => {
     });
   } catch (error) {
     logger.error(`Failed to fetch user profile: ${error.message}`);
+    
     res.status(400).json({ error: error.message });
   }
 };
 
 /**
  * @swagger
- * /api/users/password-reset:
+ * /api/auth/password-reset:
  *   post:
  *     summary: Request password reset
  *     tags: [Users]
@@ -225,7 +226,7 @@ export const resetPassword = async (req, res) => {
 
 /**
  * @swagger
- * /api/users/password-reset/complete:
+ * /api/auth/password-reset/complete:
  *   post:
  *     summary: Complete the password reset process
  *     tags: [Users]

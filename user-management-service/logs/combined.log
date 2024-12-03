@@ -52,3 +52,127 @@
 2024-12-02 18:43:48 [33mwarn[39m: Attempted registration with existing email: ariij.saleh@gmail.com
 2024-12-02 18:43:48 [31merror[39m: User registration failed: Email already exists
 2024-12-02 18:44:44 [32minfo[39m: User already logged in with id : 7
+2024-12-02 21:08:57 [31merror[39m: Unauthorized access attempt: jwt expired
+2024-12-02 21:09:08 [32minfo[39m: Login successful: ariij.saleh@gmail.com
+2024-12-02 21:09:29 [31merror[39m: Failed to fetch user profile: 
+Invalid `prisma.user.findUnique()` invocation:
+
+{
+  where: {
+    id: undefined,
+?   email?: String,
+?   AND?: UserWhereInput | UserWhereInput[],
+?   OR?: UserWhereInput[],
+?   NOT?: UserWhereInput | UserWhereInput[],
+?   passwordHash?: StringFilter | String,
+?   role?: EnumRoleFilter | Role,
+?   isVerified?: BoolFilter | Boolean,
+?   createdAt?: DateTimeFilter | DateTime,
+?   updatedAt?: DateTimeFilter | DateTime,
+?   lastLogin?: DateTimeNullableFilter | DateTime | Null,
+?   resetToken?: StringNullableFilter | String | Null,
+?   resetTokenExpiry?: DateTimeNullableFilter | DateTime | Null
+  }
+}
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+2024-12-02 21:11:43 [31merror[39m: Failed to fetch user profile: 
+Invalid `prisma.user.findUnique()` invocation:
+
+{
+  where: {
+    id: undefined,
+?   email?: String,
+?   AND?: UserWhereInput | UserWhereInput[],
+?   OR?: UserWhereInput[],
+?   NOT?: UserWhereInput | UserWhereInput[],
+?   passwordHash?: StringFilter | String,
+?   role?: EnumRoleFilter | Role,
+?   isVerified?: BoolFilter | Boolean,
+?   createdAt?: DateTimeFilter | DateTime,
+?   updatedAt?: DateTimeFilter | DateTime,
+?   lastLogin?: DateTimeNullableFilter | DateTime | Null,
+?   resetToken?: StringNullableFilter | String | Null,
+?   resetTokenExpiry?: DateTimeNullableFilter | DateTime | Null
+  }
+}
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+2024-12-02 21:12:56 [31merror[39m: Failed to fetch user profile: 
+Invalid `prisma.user.findUnique()` invocation:
+
+{
+  where: {
+    id: undefined,
+?   email?: String,
+?   AND?: UserWhereInput | UserWhereInput[],
+?   OR?: UserWhereInput[],
+?   NOT?: UserWhereInput | UserWhereInput[],
+?   passwordHash?: StringFilter | String,
+?   role?: EnumRoleFilter | Role,
+?   isVerified?: BoolFilter | Boolean,
+?   createdAt?: DateTimeFilter | DateTime,
+?   updatedAt?: DateTimeFilter | DateTime,
+?   lastLogin?: DateTimeNullableFilter | DateTime | Null,
+?   resetToken?: StringNullableFilter | String | Null,
+?   resetTokenExpiry?: DateTimeNullableFilter | DateTime | Null
+  }
+}
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+2024-12-02 21:13:12 [31merror[39m: Failed to fetch user profile: 
+Invalid `prisma.user.findUnique()` invocation:
+
+{
+  where: {
+    id: undefined,
+?   email?: String,
+?   AND?: UserWhereInput | UserWhereInput[],
+?   OR?: UserWhereInput[],
+?   NOT?: UserWhereInput | UserWhereInput[],
+?   passwordHash?: StringFilter | String,
+?   role?: EnumRoleFilter | Role,
+?   isVerified?: BoolFilter | Boolean,
+?   createdAt?: DateTimeFilter | DateTime,
+?   updatedAt?: DateTimeFilter | DateTime,
+?   lastLogin?: DateTimeNullableFilter | DateTime | Null,
+?   resetToken?: StringNullableFilter | String | Null,
+?   resetTokenExpiry?: DateTimeNullableFilter | DateTime | Null
+  }
+}
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+2024-12-02 21:14:58 [31merror[39m: Failed to fetch user profile: 
+Invalid `prisma.user.findUnique()` invocation:
+
+{
+  where: {
+    id: undefined,
+?   email?: String,
+?   AND?: UserWhereInput | UserWhereInput[],
+?   OR?: UserWhereInput[],
+?   NOT?: UserWhereInput | UserWhereInput[],
+?   passwordHash?: StringFilter | String,
+?   role?: EnumRoleFilter | Role,
+?   isVerified?: BoolFilter | Boolean,
+?   createdAt?: DateTimeFilter | DateTime,
+?   updatedAt?: DateTimeFilter | DateTime,
+?   lastLogin?: DateTimeNullableFilter | DateTime | Null,
+?   resetToken?: StringNullableFilter | String | Null,
+?   resetTokenExpiry?: DateTimeNullableFilter | DateTime | Null
+  }
+}
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+2024-12-02 21:23:18 [32minfo[39m: Email sent: <33fee982-2483-cd82-cfff-6d888a1af505@houddle.com> to ariij.saleh@gmail.com
+2024-12-02 21:23:18 [32minfo[39m: Password reset email sent to: ariij.saleh@gmail.com
+2024-12-02 21:35:18 [32minfo[39m: Password successfully reset for user: ariij.saleh@gmail.com
+2024-12-02 21:36:48 [33mwarn[39m: Invalid or expired reset token for email: ariij.saleh@gmail.com
+2024-12-02 21:36:48 [31merror[39m: Password reset completion failed: Invalid or expired reset token
+2024-12-02 21:36:58 [33mwarn[39m: Invalid or expired reset token for email: ariij.saleh@gmail.c
+2024-12-02 21:36:58 [31merror[39m: Password reset completion failed: Invalid or expired reset token
+2024-12-02 21:37:36 [32minfo[39m: Email sent: <fb97c5cd-f90a-f776-a69f-98c53e8bf7ec@houddle.com> to ariij.saleh@gmail.com
+2024-12-02 21:37:36 [32minfo[39m: Password reset email sent to: ariij.saleh@gmail.com
+2024-12-02 21:38:17 [32minfo[39m: Password successfully reset for user: ariij.saleh@gmail.com
+2024-12-02 21:46:33 [32minfo[39m: Email sent: <b9ab27b0-4115-2960-2c55-297956666024@houddle.com> to ariij.saleh@gmail.com
+2024-12-02 21:46:33 [32minfo[39m: Password reset email sent to: ariij.saleh@gmail.com
